@@ -1,6 +1,6 @@
 @{
     # Script module or binary module file associated with this manifest.
-    RootModule = '<RootModule>'
+    RootModule = 'Module.TestModule.psm1'
     
     # Version number of this module.
     ModuleVersion = '<ModuleVersion>'
@@ -9,19 +9,19 @@
     # CompatiblePSEditions = @()
     
     # ID used to uniquely identify this module
-    GUID = '<GUID>'
+    GUID = '90db23d8-eba7-4eac-bcb5-7bef50766214'
     
     # Author of this module
-    Author = '<Author>'
+    Author = 'Jesper Hald'
     
     # Company or vendor of this module
-    CompanyName = '<CompanyName>'
+    CompanyName = 'AabyeHald Consulting'
     
     # Copyright statement for this module
-    Copyright = '<Copyright>'
+    Copyright = '(c) AabyeHald Consulting - All rights reserved.'
     
     # Description of the functionality provided by this module
-    Description = '<Decription>'
+    Description = 'description'
     
     # Minimum version of the PowerShell engine required by this module
     # PowerShellVersion = ''
@@ -119,3 +119,4 @@
     # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
     # DefaultCommandPrefix = ''  
 }
+

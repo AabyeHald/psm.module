@@ -1,4 +1,4 @@
-name: "Prefix.ModuleName.Commit"
+name: "Module.TestModule.Commit"
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "main"
 
 env:
-  MODULENAME: "Prefix.ModuleName"
+  MODULENAME: "Module.TestModule"
 
 jobs:
   Test:
@@ -26,6 +26,7 @@ jobs:
         id: Test
         shell: pwsh
         run: Invoke-Expression .\$env:MODULENAME\_Test\$env:MODULENAME.Test.ps1
+
 
 
 

@@ -1,4 +1,4 @@
-name: "Prefix.ModuleName.Release"
+name: "Module.TestModule.Release"
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
 env:
-  MODULENAME: "Prefix.ModuleName"
+  MODULENAME: "Module.TestModule"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
@@ -27,6 +27,7 @@ jobs:
         id: Publish
         shell: pwsh
         run: Invoke-Expression .\$env:MODULENAME\_Build\$env:MODULENAME.Release.ps1
+
 
 
 
