@@ -40,13 +40,10 @@ $RepositorySource = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY"
 $ModulePath = Join-Path -Path $RootPath -ChildPath "$ModuleName\$ModuleName"
 $ReleasePath = Join-Path -Path $RootPath -ChildPath "Release"
 
-
 # Publish module locally first
 $null = New-Item -Path $ReleasePath -ItemType Directory -Force
 Register-PSRepository -Name "LocalBuild" -SourceLocation $ModulePath -PublishLocation $ReleasePath -InstallationPolicy Trusted
 Publish-Module -Path $ModulePath -Repository "LocalBuild"
 
-dir $ReleasePath
-
-dotnet tool install --global gpr --version 0.1.281
+dotnet tool install --global gpr --version 0.1.294
 gpr push -k $APIKey "$ReleasePath/$ModuleName.$ModuleVersion.nupkg" -r $RepositorySource
