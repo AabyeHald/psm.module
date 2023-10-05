@@ -1,0 +1,34 @@
+name: "Prefix.ModuleName.Commit"
+
+on:
+  push:
+    branches:
+      - "main"
+
+env:
+  MODULENAME: "Prefix.ModuleName"
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        id: Checkout-source-repository
+        uses: actions/checkout@v3
+      - name: Retrieve version
+        id: Retrieve-version
+        run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+      - name: Build
+        id: Build
+        shell: pwsh
+        run: Invoke-Expression .\$env:MODULENAME\_Build\$env:MODULENAME.Build.ps1
+      - name: Test
+        id: Test
+        shell: pwsh
+        run: Invoke-Expression .\$env:MODULENAME\_Test\$env:MODULENAME.Test.ps1
+
+
+
+
+
+

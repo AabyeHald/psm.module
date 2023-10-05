@@ -1,0 +1,34 @@
+name: "Prefix.ModuleName.Release"
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+env:
+  MODULENAME: "Prefix.ModuleName"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        id: Checkout-source-repository
+        uses: actions/checkout@v3
+      - name: Retrieve version
+        id: Retrieve-version
+        run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
+      - name: Build
+        id: Build
+        shell: pwsh
+        run: Invoke-Expression .\$env:MODULENAME\_Build\$env:MODULENAME.Build.ps1
+      - name: Publish
+        id: Publish
+        shell: pwsh
+        run: Invoke-Expression .\$env:MODULENAME\_Build\$env:MODULENAME.Release.ps1
+
+
+
+
+
